@@ -1,0 +1,34 @@
+*{
+   margin: 0; 
+   padding: 0; 
+   box-sizing: border-box; 
+}
+
+#campo {
+   width: 50vw;
+   height: 50vh;
+   margin: auto;
+}
+
+.quadrato {
+   width: calc(50vw / 10);
+   height: calc(50vw / 10);
+   float: left;
+   background-color: rgb(215, 240, 213);
+   /* padding: px; */
+}
+
+.cella {
+   width: 100%;
+   height: 100%;
+   border: 1px solid red;
+   text-align: center;
+   padding-top: 12px;
+   
+}
+
+.green {
+   background-color: green;
+  
+   
+}

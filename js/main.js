@@ -25,60 +25,89 @@ E bon travail a tutti quanti. Vi ricordo che sono disponibile per i ticket fino 
 
 */
 
-function getRndInteger(min, max) {
-   return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
+// var bombe = [];
 
-var bombe = [];
+// while (bombe.length < 16) {
+//    var bomba = getRndInteger(1, 100);
+//    if (!bombe.includes(bomba)) { 
+//       bombe.push(bomba);
+//    }
+// }
 
-while (bombe.length < 16) {
-   var bomba = getRndInteger(1, 100);
-   if (!bombe.includes(bomba)) { 
-      bombe.push(bomba);
-   }
-}
+// console.log(bombe);
 
-console.log(bombe);
+// // In seguito deve chiedere all’utente (100 - 16 =84) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 
-// In seguito deve chiedere all’utente (100 - 16 =84) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+// var scegliNum = [];
+// var hoPerso = false;
 
-var scegliNum = [];
-var hoPerso = false;
-
-while (scegliNum.length < 5 && !hoPerso) {
+// while (scegliNum.length < 5 && !hoPerso) {
    
-   console.log("i numeri che hai scelto sono " +  scegliNum.length);
-   do {
-      var num = parseInt(prompt("inserisci un numeo tra uno e 100"));  
-   } while (scegliNum.includes(num));
+//    console.log("i numeri che hai scelto sono " +  scegliNum.length);
+//    do {
+//       var num = parseInt(prompt("inserisci un numeo tra uno e 100"));  
+//    } while (scegliNum.includes(num));
   
-   if (bombe.includes(num)){
-      console.log("hai perso");
-      hoPerso = true;
-   } else {
-      scegliNum.push(num);
-   }
-   
-}
-   if(scegliNum.length == 5){
-     
-      console.log("hai vinto");
+//    if (bombe.includes(num)){
+//       console.log("hai perso");
+//       hoPerso = true;
+//    } else {
+//       scegliNum.push(num);
       
+//    }
+   
+// }
+//    if(scegliNum.length == 5){
+     
+//       console.log("hai vinto");
+      
+//    }
+
+   // parte grafica
+
+   creaCampo (100);
+   
+   // funzioni
+
+   function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) ) + min;
    }
-// L’utente non può inserire più volte lo stesso numero.
 
+   function creaCampo(celle){
+      for (let i = 1; i <= celle; i++){
+         let cella = `
+            <div data-cella = "${i}" class= "cella"></div>
+         `
+         let strutturaCella = document.createElement("div");
+         strutturaCella.classList.add("quadrato");
+         strutturaCella.innerHTML = cella;
+         document.getElementById("campo").appendChild(strutturaCella);
+         
+      }
+   }
 
-// Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
+   
+   document.getElementById("campo").addEventListener("click",
+   function(e){
+      let num = parseInt(e.target.dataset.cella);
+      let element = document.querySelectorAll("[data-cella='" + e.target.dataset.cella + "']");
+         console.log(element[0]);
+         element[0].innerHTML=num;
+         element[0].classList.add("green");
+         var bombe = [];
 
+         while (bombe.length < 16) {
+            var bomba = getRndInteger(1, 100);
+            if (!bombe.includes(bomba)) { 
+               bombe.push(bomba);
+            }
+         }
+         console.log(bombe);
 
-// La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
+      
 
+         
 
-
- 
-
-
-
-
-
-
+      }
+   
+   )
